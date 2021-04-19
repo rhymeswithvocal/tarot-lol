@@ -66,7 +66,7 @@ drawnCards
                         let interestNum = interestCard.number;
                         let arcanaCheck = interestCard.arcana;
                 getDeets([interestCard]);
-                drawNumerol(interestNum,arcanaCheck);
+                drawNumerol(interestNum,arcanaCheck,[interestCard]);
                     });
     
 let cardNames = svg.selectAll(".card-title")
@@ -232,7 +232,7 @@ const CenCardX = (n) => {
 };
     
 
-const drawNumerol = (n,arc) => {
+const drawNumerol = (n,arc,rd) => {
     if (n > 0 && n < 11) {
         svg2.selectAll("*").remove();
         
@@ -251,7 +251,7 @@ const drawNumerol = (n,arc) => {
             .attr("class","numer-descrip")
             .text(countEm[n][1].Numerology)
             .attr("text-anchor","middle")
-            .attr("x", 250)
+            .attr("x", (d,i) => 250 + i*1000)
             .attr("y", 25);
 
         svg2.selectAll("image")
@@ -264,13 +264,23 @@ const drawNumerol = (n,arc) => {
             .attr("width", (d,i) => numerCardW(i));
     } else if ((arc == "Major Arcana") && n > 11 || n == 0){
         svg2.selectAll("image")
-            .data([data[n]])
+            .data(rd)
             .join("image")
             .attr("xlink:href", (d) => "/data/cards/" + d.img)
-            .attr("y", (d,i) => numerLocY(i)-102-CenCardY(i))
-            .attr("x", (d,i) => numerLocX(i)-45-CenCardX(i))
-            .attr("height",(d,i) => numerCardH(i))
-            .attr("width", (d,i) => numerCardW(i));
+            .attr("y", 60)
+            .attr("x", 135)
+            .attr("width", 230);
+        
+        svg2.selectAll(".numer-descrip")
+            .data(rd)
+            .join("text")
+            .attr("class","numer-descrip")
+            .text(rd[0].Numerology)
+            .attr("text-anchor","middle")
+            .attr("x", (d,i) => 250 + i*1000)
+            .attr("y", 25);
+        
+        svg2.selectAll(".card-title-n").remove();
         
     } else{
         svg2.selectAll("*").remove();
