@@ -262,7 +262,9 @@ const drawNumerol = (n,arc,rd) => {
             .attr("x", (d,i) => numerLocX(i)-45-CenCardX(i))
             .attr("height",(d,i) => numerCardH(i))
             .attr("width", (d,i) => numerCardW(i));
-    } else if ((arc == "Major Arcana") && n > 11 || n == 0){
+    } else if ((arc == "Major Arcana") && n >= 11 || n == 0){
+        svg2.selectAll("*").remove();
+        
         svg2.selectAll("image")
             .data(rd)
             .join("image")
