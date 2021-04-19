@@ -1,0 +1,56 @@
+header {
+    font-family: Helvetica;
+    
+}
+
+.card-title {
+    color: black;
+    font-family: Helvetica;
+    font-size: 1.2em;
+}
+
+#pushme {
+    color: indianred;
+}
+
+.card-sub, .card-sub2 {
+    color: red;
+    font-size: 0.9em;
+}
+
+.card-title-n {
+    
+}
+
+.numer-descrip {
+    font-size: 1.2em;
+}
+
+#getReading {
+    font-size: 1.2em;
+    background-color:#FCBF49;
+    border-radius: 10px;
+}
+
+#getReading:active {
+    background-color: #F77F00;
+}
+
+.titular {
+    color: #D62828;
+    text-align: center;
+    font-size: 4em;
+}
+
+.topExplain {
+    color: #003049;
+    text-align: center;
+}
+
+body {
+    background-color: #F6F2DF;
+}
+
+.sectHead {
+
+}

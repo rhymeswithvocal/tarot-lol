@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<title>TAROT, LOL</title>
+	<meta name="author" content="Your Name">
+	<meta name="description" content="Example description">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon" type="image/x-icon" href="magic.png"/>
+    <script>
+    function defineSpreadSize () {    
+let countCards = document.getElementById("countCards");
+let spreadSize = countCards.options[countCards.selectedIndex].value;
+console.log(spreadSize);
+}
+    </script>
+</head>
+
+<body>
+	<header><h1 class="titular">TAROT, LOL</h1></header>
+    <main>
+    <p class="topExplain">A goofy, experimental way to read tarot. <br><br>The goal of this site is to give beginner and mid-level tarot readers reminders not just of the cards' meanings, but how they associate with other cards in the deck.<br><br>If you don't know anything about tarot, that's fine! Hit the button, click on some cards, see if you get a sense of it.</p>    
+    <select name="countCards" id="countCards">
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3 selected>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+        <option value=6>6</option>
+    </select>
+        <button id="getReading">Computer, pull cards for me</button><br><p>Click on any of your drawn cards to get information about that card.</p><br>
+    </main>
+	<footer></footer>
+	<script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="tarot-first-pass.js"></script>
+</body>
+
+</html>
