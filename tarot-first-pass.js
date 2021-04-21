@@ -21,8 +21,9 @@ const body = d3.select("body");
 const svg = body.append("svg")
                 .attr("height","430")
                 .attr("width","740")
-                .style("border","1px solid grey")
-                .style("background-color","#ffffff");
+                .style("border","1px solid #D62828")
+                .style("background-color","#ffffff")
+                .attr("class","center-up");
     
 const readYourCards = () => {
     //shuffling the deck, pulling the specified number of cards
@@ -114,16 +115,22 @@ ReadingButton.addEventListener("click", () => readYourCards());
     
 //split up cards by their number
     
+body.append("p")
+            .text("Click on any of the cards you drew to generate insights below.")
+            .attr("class","center-up")
+            .attr("class","p")
+            .style("margin","20px 0px 0px 0px");
 
-    
-
+body.append("h2")
+        .attr("class","sectHead")
+        .text("Keywords");
 
 const svg1 = body.append("svg")
                     .attr("height","300")
                     .attr("width","500")
-                    .style("border","1px solid grey")
-                    .style("margin","20px 20px")
-                    .style("background-color","#ffffff");
+                    .style("border","1px solid #D62828")
+                    .style("background-color","#ffffff")
+                    .attr("class","center-up");
     
 //a function that drops the comma if there's only 3 descriptors
 const onlyThrees = (keyword3,keyword4) => {
@@ -162,18 +169,34 @@ let getDeets = (intCard) => {
     svg1.selectAll(".cardSub1")
             .data(intCard)
             .join("text")
-            .text(d => d.keywords__001 + ', ' + d.keywords__002 + ',')
+            .text(d => d.keywords__001)
             .attr("class","cardSub1")
             .attr("x",220)
-            .attr("y",60);
+            .attr("y",90);
     
     svg1.selectAll(".cardSub2")
             .data(intCard)
             .join("text")
-            .text(d => onlyThrees(d.keywords__003,d.keywords__004))
+            .text(d => d.keywords__002)
             .attr("class","cardSub2")
             .attr("x",220)
-            .attr("y",75);
+            .attr("y",140);
+    
+    svg1.selectAll(".cardSub3")
+            .data(intCard)
+            .join("text")
+            .text(d => d.keywords__003)
+            .attr("class","cardSub3")
+            .attr("x",220)
+            .attr("y",190);
+    
+    svg1.selectAll(".cardSub4")
+            .data(intCard)
+            .join("text")
+            .text(d => d.keywords__004)
+            .attr("class","cardSub4")
+            .attr("x",220)
+            .attr("y",230);
     
     
 }
@@ -183,12 +206,12 @@ body.append("h2")
         .text("Numerology");
     
 body.append("p")
-        .text("The number on a card can tell you a lot! The major arcana in the center governs the minor arcana cards around it, and they all share certain aspects.")
+        .text("The number on a card can tell you a lot! The major arcana in the center governs the minor arcana cards around it, and they're all connected by the notes at the top of the section. (Major Arcana that don't govern minor cards will appear alone.)")
 
 const svg2 = body.append("svg")
                 .attr("height","480")
                 .attr("width","500")
-                .style("border","1px solid grey")
+                .style("border","1px solid #D62828")
                 .style("background-color","#ffffff")
                 .attr("class","center-up");
     
@@ -316,12 +339,20 @@ const drawNumerol = (n,arc,rd) => {
         svg2.selectAll("*").remove();
         
         svg2.append("text")
-                .text("oops! The face cards (or 'court cards') don't have numerological meanings in the current dataset.")
+                .text("oops!")
                 .attr("class","court-error")
-                .attr("y",50);
+                .attr("y",50)
+                .attr("x",20);
+        
+        svg2.append("text")
+                .text("the court cards don't have numerological data yet, my bad")
+                .attr("y",75)
+                .attr("x",20);
     }
 }
 
+body.append("p")
+        .text("That's all (for now)! Click a different card or draw a new spread to learn more.")
 //END OF DATA, TURN BACK
 }
 );

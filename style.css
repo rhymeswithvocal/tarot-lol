@@ -43,7 +43,7 @@ p {
     color: #003049;
     text-align: center;
     font-family: Helvetica;
-    
+    margin: 0px 60px;
 }
 
 body {
@@ -54,8 +54,25 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .sectHead {
+    font-family: Helvetica;
+    color: #D62828;
+}
 
+h2 {
+    text-align: center;
+}
+
+.inputs {
+    margin-top: 20px;
+    margin-left: 30%;
+}
+
+.cardSub1, .cardSub2, .cardSub3, .cardSub4 {
+    font-family: Helvetica;
+    font-size: 1.2em;
 }
