@@ -4,13 +4,9 @@ header {
 }
 
 .card-title {
-    color: black;
+    color: blue;
     font-family: Helvetica;
     font-size: 1.2em;
-}
-
-#pushme {
-    color: indianred;
 }
 
 .card-sub, .card-sub2 {
@@ -18,8 +14,9 @@ header {
     font-size: 0.9em;
 }
 
-.card-title-n {
-    
+.card-title-d {
+    font-family: Helvetica;
+    font-size: 2em;
 }
 
 .numer-descrip {
@@ -42,13 +39,21 @@ header {
     font-size: 4em;
 }
 
-.topExplain {
+p {
     color: #003049;
     text-align: center;
+    font-family: Helvetica;
+    
 }
 
 body {
     background-color: #F6F2DF;
+}
+
+.center-up {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .sectHead {

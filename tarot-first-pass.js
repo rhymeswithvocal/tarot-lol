@@ -46,7 +46,27 @@ let cardsTooBig = (d) => {
     } else {
         return xScale.bandwidth();
     }
-}
+};
+
+let staggerNames = (n) => {
+    if (spreadSize < 4){
+        return 405;
+    } else if (spreadSize == 4) {
+        return 355;
+    } else {
+        return 280 + 25*n;
+    }
+};
+    
+let staggerCards = (n) => {
+    if (spreadSize == 5){
+        return 30 + ((n-1)*25);
+    } else if (spreadSize == 6){
+        return 40 + n*25;
+    } else {
+        return 30;
+    }
+};
 
 let drawnCards = svg.selectAll("image")
                     .data(yourReading)
@@ -57,7 +77,7 @@ let drawnCards = svg.selectAll("image")
                     .attr("y", -550);
 drawnCards
                     .transition().duration((d,i) => cardDelay + i*cardDelay)
-                    .attr("y", 40);
+                    .attr("y", (d,i) => staggerCards(i));
 drawnCards
                     .data(yourReading)
                     .on("click",function(){
@@ -75,7 +95,7 @@ let cardNames = svg.selectAll(".card-title")
                     .text(d => d.name)
                     .attr("class","card-title")
                      .attr("text-anchor","middle")
-                    .attr("y", 400)
+                    .attr("y", (d,i) => staggerNames(i))
                     .attr("x", (d) => (0.5*cardsTooBig(d)) + xScale(d.name))
                     .style("opacity",0)
                     .transition().duration((d,i) => textDelay + i*textDelay)
@@ -122,15 +142,19 @@ let getDeets = (intCard) => {
                     .attr("xlink:href", (d) => "/data/cards/" + d.img)
                     .attr("width",150)
                     .attr("x", 20)
-                    .attr("y", 20);
+                    .attr("y", 20)
+                    .attr("opacity",0)
+                    .transition().duration(400)
+                    .attr("opacity",1);
     
-    svg1.selectAll(".card-title")
+    svg1.selectAll(".card-title-d")
             .data(intCard)
             .join("text")
             .text(d => d.name)
-            .attr("class","card-title")
-            .attr("y",35)
-            .attr("x",220)
+            .attr("class","card-title-d")
+            .attr("text-anchor","middle")
+            .attr("y",45)
+            .attr("x",330)
             .style("opacity",0)
             .transition().duration(400)
             .style("opacity",1);
@@ -157,12 +181,16 @@ let getDeets = (intCard) => {
 body.append("h2")
         .attr("class","sectHead")
         .text("Numerology");
+    
+body.append("p")
+        .text("The number on a card can tell you a lot! The major arcana in the center governs the minor arcana cards around it, and they all share certain aspects.")
 
 const svg2 = body.append("svg")
                 .attr("height","480")
                 .attr("width","500")
                 .style("border","1px solid grey")
-                .style("background-color","#ffffff");
+                .style("background-color","#ffffff")
+                .attr("class","center-up");
     
     
 //###############################//
