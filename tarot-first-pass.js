@@ -16,7 +16,7 @@ const wands = data.slice(50,64);
 const coins = data.slice(64,78);
 
 //select the body
-const body = d3.select("body");
+const body = d3.select("main");
 
 const svg = body.append("svg")
                 .attr("height","430")
@@ -339,20 +339,26 @@ const drawNumerol = (n,arc,rd) => {
         svg2.selectAll("*").remove();
         
         svg2.append("text")
-                .text("oops!")
+                .text("Oops!")
                 .attr("class","court-error")
                 .attr("y",50)
                 .attr("x",20);
         
         svg2.append("text")
-                .text("the court cards don't have numerological data yet, my bad")
+                .text("The court cards don't have numerological data yet, my bad.")
                 .attr("y",75)
+                .attr("x",20);
+        
+        svg2.append("text")
+                .text("Try a different card.")
+                .attr("y",100)
                 .attr("x",20);
     }
 }
 
 body.append("p")
         .text("That's all (for now)! Click a different card or draw a new spread to learn more.")
+        .attr("class","lastWord");
 //END OF DATA, TURN BACK
 }
 );

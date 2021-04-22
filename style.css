@@ -76,3 +76,19 @@ h2 {
     font-family: Helvetica;
     font-size: 1.2em;
 }
+
+footer {
+    background-color: #FCBF49;
+}
+
+.slug {
+    padding: 5px 0px 20px 0px
+}
+
+a {
+    color:#D62828;
+}
+
+.lastWord {
+    margin-bottom:10px;
+}
